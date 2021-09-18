@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/070428bd88.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Text Editor | Coderider</title>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#body{
+    /*height: 100vh;*/
+    /*width: auto;*/
+    display: inline;
+    /*place-items:center;*/
+    /*background: #f53b57;*/
+    /*background:grey;*/
+    font-family: 'Nunito', sans-serif;
+}
+.container{
+    width:auto;
+    margin-top: 200px;
+    margin-right: 20px;
+    padding: 15px;
+    background: #f53b57;
+    border-radius: 10px;
+    box-shadow: 0 0 32px rgba(0, 0, 0, 0.3);
+}
+.title__section{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.title__section img{
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+.title__section p{
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #B6B6B6;
+}
+.text__section{
+    height: 80%;
+    position: relative;
+}
+#editor{
+    width: 100%;
+    resize: none;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #B6B6B6;
+    overflow-y: auto;
+}
+.text__controls{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.text__controls button{
+    width: 20px;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.writing_image{
+  width: 400px;
+  height: 300px;
+  margin-top: 200px; 
+}
+/*-----------------------download-------------------*/
+.bubbly-button {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    display: inline-block;
+    font-size: 1em;
+    padding: 1em 2em;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #f53b57;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, 
+    box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+}
+.bubbly-button:focus {
+    outline: 0;
+}
+.bubbly-button:before, .bubbly-button:after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+}
+.bubbly-button:active {
+    transform: scale(0.9);
+    background-color: #e60074;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+}
+.bubbly-button:before {
+    display: none;
+    top: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%),
+    radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+.bubbly-button:after {
+    display: none;
+    bottom: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), 
+    radial-gradient(circle, #ff0081 20%, transparent 20%), 
+    radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), 
+    radial-gradient(circle, #ff0081 20%, transparent 20%), 
+    radial-gradient(circle, #ff0081 20%, transparent 20%), 
+    radial-gradient(circle, #ff0081 20%, transparent 20%), 
+    radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+.bubbly-button.animate:before {
+    display: block;
+    animation: topBubbles ease-in-out 0.75s forwards;
+}
+.bubbly-button.animate:after {
+    display: block;
+    animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+
+@keyframes topBubbles {
+    0% {
+        background-position: 5% 90%, 10% 90%, 10% 90% 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+   }
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+   }
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+   }
+}
+@keyframes bottomBubbles {
+    0% {
+        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+   }
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+   }
+    100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+   }
+}
+/*---------------------navbar-----------------*/
+.card{
+    height: 40px;
+    width: 300px;
+    border-radius: 5px;
+    align-items: top-right ;
+    text-align: center;
+    margin-left: 1000px;
+    box-shadow: 3px 3px 5px  #f53b57,
+                -3px -3px 15px #ffffff;
+}
+.card ul{
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 5px;
+}
+.card ul li{
+    height: 25px;
+    width: 20px;
+    overflow: hidden;
+    border-radius: 3px;
+    padding: 4px;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+.card ul li a{
+    color: rgba(0, 0, 0, 0.397);
+}
+.card ul li a i{
+    margin-bottom: 15px;
+}
+.card ul li a span{
+    font-size: 14px;
+    transition: .5s;
+}
+.card ul li:hover{
+    width: 90px;
+    background: linear-gradient(90deg, rgba(153,59,215,1) 0%, rgba(227,99,221,1) 83%, rgba(255,133,133,1) 100%);
+    box-shadow:  -5px -5px 10px #cacaca,
+             5px 5px 10px #f6f6f6;
+    
+}
+.card ul li:hover a{
+    color: #fff;
+}
+.card ul li:hover a i{
+    padding-right: 5px;
+    margin-right: 5px;
+    border-right: 1px solid rgba(0, 0, 0, 0.096);
+}
+
+    </style>
+</head>
+<body >
+
+<div class="card">
+        <ul>
+            <li class=""><i class="fa fa-home" style="margin-bottom: 5px;"></i><span>Home</span></li>
+            <li><i class="fa fa-user" style="margin-bottom: 5px;"></i><span>Profile</span></li>
+            <li><i class="fa fa-cog" style="margin-bottom: 5px;"></i><span>Setting</span></li>
+            <li><i class="fa fa-bookmark" style="margin-bottom: 5px;"></i><span>Save</span></li>
+        </ul>
+    </div>
+  <div class="col-sm-12" id="body">
+    <div class="col-sm-8">
+    <div class="container">
+        <div class="title__section">
+            <img src="https://img.icons8.com/bubbles/2x/hand-with-pen.png" alt="">
+            <p>What's on your mind......</p>
+        </div>
+        <div class="text__section">
+            <iframe name="editor" id="editor"></iframe>
+            <div class="text__controls">
+                <button onClick="transform('bold', null)">
+                    <i class="fas fa-bold"></i>
+                </button>
+                <button onClick="transform('italic', null)">
+                    <i class="fas fa-italic"></i>
+                </button>
+                <button onClick="transform('strikeThrough', null)">
+                    <i class="fas fa-strikethrough"></i>
+                </button>
+                <button onClick="transform('underline', null)">
+                    <i class="fas fa-underline"></i>
+                  </button>
+                  <button onClick="transform('justifyLeft', null)">
+                    <i class="fas fa-align-left"></i>
+                  </button>
+                  <button onClick="transform('justifyCenter', null)">
+                    <i class="fas fa-align-center"></i>
+                  </button>
+                  <button onClick="transform('justifyRight', null)">
+                    <i class="fas fa-align-right"></i>
+                  </button>
+                  <div class="seperator"></div>
+                  <button onClick="transform('insertOrderedList', null)">
+                    <i class="fas fa-list-ol"></i>
+                  </button>
+                  <button onClick="transform('insertUnorderedList', null)">
+                    <i class="fas fa-list-ul"></i>
+                  </button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <img  class="writing_image" src="https://cdn.pixabay.com/photo/2017/09/23/17/16/contract-2779509__340.png">
+  </div>
+<!-- </div> -->
+</div>
+
+    <script >
+      document.getElementById("editor").contentDocument.body.style.fontFamily = "'Nunito', sans-serif";
+editor.document.designMode = "On";
+function transform(option, argument) {
+  editor.document.execCommand(option, false, argument);
+}
+    </script>
+    <!-- -------------------------------download------------- -->
+     <button class="bubbly-button" style="font-size:20px;
+    text-align: center;margin-top:20px;align-items: center;margin-left:600px;">Download</button>
+    
+    <script>
+      var animateButton = function(e) {
+    e.preventDefault;
+    e.target.classList.remove('animate');
+    e.target.classList.add('animate');
+    setTimeout(function(){
+      e.target.classList.remove('animate');
+    },700);
+  };
+  var bubblyButtons = document.getElementsByClassName("bubbly-button");
+  for (var i = 0; i < bubblyButtons.length; i++) {
+    bubblyButtons[i].addEventListener('click', animateButton, false);
+  }
+    </script>
+</body>
+</html>
